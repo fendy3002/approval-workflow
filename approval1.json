@@ -1,0 +1,79 @@
+{
+    "code": "unique-code",
+    "title": "Unique Code",
+    "view": "",
+    "points": [
+        {
+            "code": "start",
+            "type": "single",
+            "display": "Start",
+            "next": "data-entry"
+        },
+        {
+            "code": "data-entry",
+            "type": "single",
+            "display": "Data Entry",
+            "next": "data-review"
+        },
+        {
+            "code": "data-review",
+            "type": "parallel",
+            "display": "Data Review",
+            "do": [
+                "content-review",
+                "contract-review"
+            ],
+            "next": "publishing",
+            "action": {
+                "reject": "goto data-entry"
+            }
+        },
+        {
+            "code": "content-review",
+            "type": "single",
+            "display": "Content Review",
+            "next": "data-review.end"
+        },
+        {
+            "code": "contract-review",
+            "type": "single",
+            "display": "Contract Review",
+            "next": "data-review.end",
+            "action": {
+                "reject": "inherit",
+                "cancel": "reject"
+            }
+        },
+        {
+            "code": "publishing",
+            "type": "single",
+            "display": "Publishing",
+            "next": "end",
+            "action": {
+                "reject": "goto data-entry",
+                "cancel": "reject"
+            }
+        },
+        {
+            "code": "end",
+            "display": "End"
+        }
+    ],
+    "action": {
+        "reject": {
+            "method": "DELETE",
+            "url": "{{_.app-svc}}/{{content.id}}/approval"
+        },
+        "end": {
+            "method": "POST",
+            "url": "{{_.app-svc}}/{{content.id}}/approval",
+            "data": {
+                "comment": "{{_.contract-review.comment}}",
+                "field": "{{_.contract-review.value}}"
+            }
+        }
+    },
+    "parameter": {
+        "custom-param": "custom-value"
+    }
+}
