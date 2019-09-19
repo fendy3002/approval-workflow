@@ -1,0 +1,31 @@
+{
+  "name": "@fendy3002/approval-workflow",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fendy3002/approval-workflow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fendy3002/approval-workflow/issues"
+  },
+  "homepage": "https://github.com/fendy3002/approval-workflow#readme",
+  "devDependencies": {
+    "@types/node": "^12.7.5",
+    "nodemon": "^1.19.2",
+    "typescript": "^3.6.3",
+    "ts-node": "^8.4.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "mongoose": "^5.7.1"
+  }
+}
