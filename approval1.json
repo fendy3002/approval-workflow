@@ -19,7 +19,7 @@
             "code": "data-review",
             "type": "parallel",
             "display": "Data Review",
-            "do": [
+            "items": [
                 "content-review",
                 "contract-review"
             ],
