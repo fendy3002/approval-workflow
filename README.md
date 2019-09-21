@@ -7,8 +7,8 @@ Key-value pair
 ## Approval Configuration
 
 ```bash
-src
-├── approval
+.
+├── approvals
 |   ├── <app_name>
 |   |   ├── <module_name>.json
 |   |   └── <module2_name>.json

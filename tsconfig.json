@@ -5,6 +5,7 @@
         "declaration": true,
         "outDir": "dist",
         "lib": ["es5", "es6"],
+        "resolveJsonModule": true
     },
     "include": [
         "src/**/*"
