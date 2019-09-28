@@ -1,0 +1,27 @@
+title: approval-step
+type: object
+description: ''
+properties:
+  code:
+    type: string
+    example: supervisor
+  display:
+    type: string
+    example: Supervisor Review
+  next:
+    type: string
+    example: manager-review
+  type:
+    type: string
+    enum:
+      - single
+      - parallel
+  items:
+    type: array
+    items:
+      type: string
+required:
+  - code
+  - display
+x-tags:
+  - approval

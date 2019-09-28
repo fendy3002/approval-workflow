@@ -1,0 +1,18 @@
+title: approval-reserve
+type: object
+description: Response when a new approval has been reserved
+x-examples: {}
+properties:
+  id:
+    type: string
+    format: uuid
+    example: f4e3b550-2fac-4df1-ad6a-77922b95bd0b
+  created_at:
+    type: string
+    format: date-time
+    example: '2000-01-01T00:00:00z'
+  created_by:
+    type: string
+    example: administration-user
+x-tags:
+  - approval

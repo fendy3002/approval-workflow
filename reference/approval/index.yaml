@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  title: approval
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /approval:
+    post:
+      summary: reserveApproval
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ./models/approval-reserve.v1.yaml
+              examples: {}
+      description: Reserve one approval slot
+      tags:
+        - approval
+  '/approval/{id}':
+    get:
+      summary: Your GET endpoint
+      tags:
+        - approval
+      responses: {}
+    put:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+      description: ''
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: approval id
+  '/approval/{id}/approve':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: approval id
+    post:
+      summary: approveApproval
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                next:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      approver:
+                        type: string
+                      auto_approve:
+                        type: boolean
+                    required:
+                      - code
+      tags:
+        - approval
+  '/approval/{id}/reject/':
+    delete:
+      summary: rejectApproval
+      responses:
+        '200':
+          description: OK
+      tags:
+        - approval
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: approval id
+components:
+  schemas: {}
