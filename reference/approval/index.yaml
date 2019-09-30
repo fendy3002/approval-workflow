@@ -42,7 +42,7 @@ paths:
         in: path
         required: true
     get:
-      summary: ''
+      summary: getApprovalByCode
       responses:
         '200':
           description: OK
@@ -50,12 +50,12 @@ paths:
         - approval
   '/approval/{app}/{code}/{id}':
     get:
-      summary: Your GET endpoint
+      summary: getApprovalById
       tags:
         - approval
       responses: {}
     put:
-      summary: ''
+      summary: updateApprovalById
       responses:
         '200':
           description: OK
