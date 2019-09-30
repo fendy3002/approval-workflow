@@ -1,0 +1,53 @@
+title: approval-request
+type: object
+x-tags:
+  - approval
+properties:
+  id:
+    type: string
+    format: uuid
+    example: 9da36e93-f676-46c3-bfb3-d9e40e3aa7a6
+  app:
+    type: string
+    example: sales-order
+  code:
+    type: string
+    example: sales-order-create
+  meta:
+    type: object
+  display:
+    type: string
+    example: Sales order create
+  point:
+    type: array
+    items:
+      $ref: ./approval-point.v1.yaml
+  history:
+    type: array
+    items:
+      type: object
+      properties:
+        code:
+          type: string
+        display:
+          type: string
+        approver:
+          type: string
+        skipped:
+          type: boolean
+          default: false
+        created_at:
+          type: string
+          format: date-time
+        created_by:
+          type: string
+  created_at:
+    type: string
+    format: date-time
+  created_by:
+    type: string
+required:
+  - id
+  - app
+  - code
+  - point

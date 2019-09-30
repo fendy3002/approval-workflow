@@ -5,7 +5,18 @@ info:
 servers:
   - url: 'http://localhost:3000'
 paths:
-  /approval:
+  '/approval/{app}':
+    parameters:
+      - type: string
+        name: app
+        in: path
+        required: true
+    get:
+      summary: getApprovalByApp
+      tags:
+        - approval
+      responses: {}
+  '/approval/{app}/{code}':
     post:
       summary: reserveApproval
       responses:
@@ -19,7 +30,25 @@ paths:
       description: Reserve one approval slot
       tags:
         - approval
-  '/approval/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: app
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: code
+        in: path
+        required: true
+    get:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+      tags:
+        - approval
+  '/approval/{app}/{code}/{id}':
     get:
       summary: Your GET endpoint
       tags:
@@ -38,7 +67,17 @@ paths:
         in: path
         required: true
         description: approval id
-  '/approval/{id}/approve':
+      - schema:
+          type: string
+        name: app
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: code
+        in: path
+        required: true
+  '/approval/{app}/{code}/{id}/approve':
     parameters:
       - schema:
           type: string
@@ -46,6 +85,16 @@ paths:
         in: path
         required: true
         description: approval id
+      - schema:
+          type: string
+        name: app
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: code
+        in: path
+        required: true
     post:
       summary: approveApproval
       responses:
@@ -72,7 +121,7 @@ paths:
                       - code
       tags:
         - approval
-  '/approval/{id}/reject/':
+  '/approval/{app}/{code}/{id}/reject/':
     delete:
       summary: rejectApproval
       responses:
@@ -87,5 +136,15 @@ paths:
         in: path
         required: true
         description: approval id
+      - schema:
+          type: string
+        name: app
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: code
+        in: path
+        required: true
 components:
   schemas: {}
