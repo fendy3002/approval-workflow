@@ -73,10 +73,12 @@ paths:
           description: OK
     put:
       summary: updateApprovalById
+      description: ''
+      tags:
+        - approval
       responses:
         '200':
           description: OK
-      description: ''
     parameters:
       - name: id
         in: path
