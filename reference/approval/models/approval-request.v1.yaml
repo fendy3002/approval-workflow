@@ -13,6 +13,14 @@ properties:
   code:
     type: string
     example: sales-order-create
+  status:
+    type: string
+    enum:
+      - INACTIVE
+      - ACTIVE
+      - REJECTED
+      - COMPLETED
+    example: ACTIVE
   meta:
     type: object
   display:

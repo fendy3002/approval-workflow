@@ -15,7 +15,21 @@ paths:
       summary: getApprovalByApp
       tags:
         - approval
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    additionalProperties: 
+                      type: object
+                      additionalProperties: 
+                        $ref: ./approval-template.yaml
+
   '/approval/{app}/{code}':
     post:
       summary: reserveApproval

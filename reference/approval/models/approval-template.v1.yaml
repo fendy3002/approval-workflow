@@ -1,0 +1,22 @@
+title: approval-template
+type: object
+x-tags:
+  - approval
+properties:
+  code:
+    type: string
+    example: sales-order-create
+  app:
+    type: string
+    example: sales-order
+  display:
+    type: string
+    example: Sales order create
+  point:
+    type: array
+    items:
+      $ref: ./approval-point.v1.yaml
+required:
+  - app
+  - code
+  - point
