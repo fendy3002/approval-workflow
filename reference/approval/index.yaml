@@ -28,7 +28,7 @@ paths:
                     additionalProperties: 
                       type: object
                       additionalProperties: 
-                        $ref: ./approval-template.yaml
+                        $ref: ./models/approval-template.yaml
 
   '/approval/{app}/{code}':
     post:
