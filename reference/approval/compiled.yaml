@@ -26,11 +26,57 @@ paths:
                 properties:
                   data:
                     type: object
-                    additionalProperties: 
+                    additionalProperties:
                       type: object
-                      additionalProperties: 
-                        $ref: ./models/approval-template.v1.yaml
-
+                      additionalProperties:
+                        title: approval-template
+                        type: object
+                        x-tags:
+                          - approval
+                        properties:
+                          code:
+                            type: string
+                            example: sales-order-create
+                          app:
+                            type: string
+                            example: sales-order
+                          display:
+                            type: string
+                            example: Sales order create
+                          point:
+                            type: array
+                            items:
+                              title: approval-point
+                              type: object
+                              description: ''
+                              properties:
+                                code:
+                                  type: string
+                                  example: supervisor
+                                display:
+                                  type: string
+                                  example: Supervisor Review
+                                next:
+                                  type: string
+                                  example: manager-review
+                                type:
+                                  type: string
+                                  enum:
+                                    - single
+                                    - parallel
+                                items:
+                                  type: array
+                                  items:
+                                    type: string
+                              required:
+                                - code
+                                - display
+                              x-tags:
+                                - approval
+                        required:
+                          - app
+                          - code
+                          - point
   '/approval/{app}/{code}':
     post:
       summary: reserveApproval
@@ -40,7 +86,24 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/approval-reserve.v1.yaml
+                title: approval-reserve
+                type: object
+                description: Response when a new approval has been reserved
+                x-examples: {}
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    example: f4e3b550-2fac-4df1-ad6a-77922b95bd0b
+                  created_at:
+                    type: string
+                    format: date-time
+                    example: '2000-01-01T00:00:00z'
+                  created_by:
+                    type: string
+                    example: administration-user
+                x-tags:
+                  - approval
               examples: {}
       description: Reserve one approval slot
       tags:
@@ -163,6 +226,5 @@ paths:
       responses:
         '200':
           description: OK
-          
 components:
   schemas: {}
